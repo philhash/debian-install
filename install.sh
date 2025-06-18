@@ -1,6 +1,6 @@
 #Install XFCE
 sudo apt install -y xfce4 xfce4-power-manager xfce4-clipman-plugin xfce4-screenshooter xfce4-taskmanager xfce4-terminal blueman slick-greeter \
-	mousepad ristretto atril vlc ibus-unikey timeshift curl gh firewalld firefox adb fastboot gnome-disk-utility xarchiver thunar-archive-plugin unrar \
+	mousepad ristretto atril vlc ibus-unikey timeshift curl gh firewalld firefox-esr adb fastboot gnome-disk-utility xarchiver thunar-archive-plugin unrar \
 	flatpak intel-media-va-driver-non-free i965-va-driver-shaders libavcodec-extra gstreamer1.0-vaapi \
 	network-manager-gnome network-manager-openvpn-gnome xserver-xorg-video-intel-
 #Add flathub repo
