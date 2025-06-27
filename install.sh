@@ -2,7 +2,7 @@
 sudo apt install -y xfce4 xfce4-power-manager xfce4-clipman-plugin xfce4-screenshooter xfce4-taskmanager xfce4-terminal blueman slick-greeter \
 	mousepad ristretto atril vlc ibus-unikey timeshift curl gh firewalld firefox-esr adb fastboot gnome-disk-utility thunar-archive-plugin unrar \
 	flatpak intel-media-va-driver-non-free i965-va-driver-shaders libavcodec-extra gstreamer1.0-vaapi greybird-gtk-theme \
-	network-manager-gnome network-manager-openvpn-gnome xserver-xorg-video-intel-
+	network-manager-gnome network-manager-openvpn-gnome xserver-xorg-video-intel- desktop-base- tango-icon-theme- thunar-volman-
 #Add flathub repo
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 #Add vscodium gpg key
