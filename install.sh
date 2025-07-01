@@ -1,27 +1,14 @@
-#Install XFCE
-sudo apt install -y gnome-session gnome-terminal gnome-system-monitor network-manager-gnome network-manager-openvpn-gnome gnome-disk-utility nautilus ibus-unikey timeshift curl gh firewalld adb fastboot unrar flatpak intel-media-va-driver-non-free i965-va-driver-shaders libavcodec-extra gstreamer1.0-vaapi xserver-xorg-video-intel-
-#Add flathub repo
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-#hidpi gnome login screen
-sudo tee /usr/share/glib-2.0/schemas/99_hidpi.gschema.override << EOF
-[org.gnome.desktop.interface]
-text-scaling-factor=1.5
-cursor-size=32
-scaling-factor=1
-EOF
-#Compile the schemas
-sudo glib-compile-schemas /usr/share/glib-2.0/schemas
-##Change Grub resolution
-sudo sed -i 's/#GRUB_GFXMODE=640x480/GRUB_GFXMODE=800x600/g' /etc/default/grub
-sudo update-grub
-#Add vscodium gpg key
-wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
-    | gpg --dearmor \
-    | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
-#Add the repository
-echo 'deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' \
-    | sudo tee /etc/apt/sources.list.d/vscodium.list
-#Install vscodium
-sudo apt update && sudo apt install codium
-#Install fnm
-curl -fsSL https://fnm.vercel.app/install | bash
+#Create a directory to store APT repository keys if it doesn't exist:
+sudo install -d -m 0755 /etc/apt/keyrings
+#Import the Mozilla APT repository signing key:
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+#The fingerprint should be 35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3. You may check it with the following command:
+gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") print "\nThe key fingerprint matches ("$0").\n"; else print "\nVerification failed: the fingerprint ("$0") does not match the expected one.\n"}'
+#Next, add the Mozilla APT repository to your sources list:
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+#Configure APT to prioritize packages from the Mozilla repository:
+echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla
