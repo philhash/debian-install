@@ -1,5 +1,5 @@
 #Install XFCE
-sudo apt install -y gnome-session gnome-terminal gnome-system-monitor firefox-esr ibus-unikey timeshift curl gh firewalld adb fastboot gnome-disk-utility unrar flatpak intel-media-va-driver-non-free i965-va-driver-shaders libavcodec-extra gstreamer1.0-vaapi network-manager-gnome network-manager-openvpn-gnome xserver-xorg-video-intel-
+sudo apt install -y gnome-session gnome-terminal gnome-system-monitor network-manager-gnome network-manager-openvpn-gnome gnome-disk-utility nautilus firefox-esr  ibus-unikey timeshift curl gh firewalld adb fastboot unrar flatpak intel-media-va-driver-non-free i965-va-driver-shaders libavcodec-extra gstreamer1.0-vaapi xserver-xorg-video-intel-
 #Add flathub repo
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 #Add vscodium gpg key
