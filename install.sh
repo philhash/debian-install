@@ -2,6 +2,18 @@
 sudo apt install -y gnome-session gnome-terminal gnome-system-monitor network-manager-gnome network-manager-openvpn-gnome gnome-disk-utility nautilus ibus-unikey timeshift curl gh firewalld adb fastboot unrar flatpak intel-media-va-driver-non-free i965-va-driver-shaders libavcodec-extra gstreamer1.0-vaapi xserver-xorg-video-intel-
 #Add flathub repo
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#hidpi gnome login screen
+sudo tee /usr/share/glib-2.0/schemas/99_hidpi.gschema.override << EOF
+[org.gnome.desktop.interface]
+text-scaling-factor=1.5
+cursor-size=32
+scaling-factor=1
+EOF
+#Compile the schemas
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+##Change Grub resolution
+sudo sed -i 's/#GRUB_GFXMODE=640x480/GRUB_GFXMODE=800x600/g' /etc/default/grub
+sudo update-grub
 #Add vscodium gpg key
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
     | gpg --dearmor \
