@@ -13,15 +13,6 @@ tap-to-click=true
 EOF
 #Compile the schemas
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas
-#Add vscodium gpg key
-wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
-    | gpg --dearmor \
-    | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
-#Add the repository
-echo 'deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' \
-    | sudo tee /etc/apt/sources.list.d/vscodium.list
-#Install vscodium
-sudo apt update && sudo apt install codium
 #Install fnm
 curl -fsSL https://fnm.vercel.app/install | bash
 #Install Brave
