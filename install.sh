@@ -8,8 +8,6 @@ sudo tee /usr/share/glib-2.0/schemas/99_hidpi.gschema.override << EOF
 text-scaling-factor=1.5
 cursor-size=32
 scaling-factor=1
-[org.gnome.desktop.peripherals.touchpad]
-tap-to-click=true
 EOF
 #Compile the schemas
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas
