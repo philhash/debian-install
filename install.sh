@@ -1,5 +1,5 @@
 #Install minimal gnome
-sudo apt install -y gnome-session gnome-console network-manager-gnome network-manager-openvpn-gnome gnome-disk-utility nautilus gnome-shell-pomodoro vlc ibus-unikey timeshift curl gh firewalld adb fastboot unrar flatpak intel-media-va-driver-non-free libavcodec-extra gstreamer1.0-vaapi
+sudo apt install -y gnome-session gnome-console network-manager-gnome network-manager-openvpn-gnome gnome-disk-utility nautilus gnome-shell-pomodoro firefox-esr vlc ibus-unikey timeshift curl gh firewalld adb fastboot unrar flatpak intel-media-va-driver-non-free libavcodec-extra gstreamer1.0-vaapi
 #Install Brave
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
